@@ -12,7 +12,7 @@ function App() {
         label="click to trigger toast"
         onClick={() => setIsOpen(!isOpen)}
       />
-      <Toast isOpen={isOpen} text="추천인 코드가 복사되었습니다." />
+      <Toast isOpen={isOpen} text="toast triggered" />
     </>
   );
 }
