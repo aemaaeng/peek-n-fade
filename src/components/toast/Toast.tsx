@@ -1,11 +1,24 @@
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 
 interface ToastProps {
   isOpen: boolean;
-  text?: string;
+  text: string;
+  duration?: number;
+  onClose: () => void;
 }
 
-const Toast = ({ isOpen, text }: ToastProps) => {
+const Toast = ({ isOpen, text, duration = 3000, onClose }: ToastProps) => {
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        onClose();
+      }, duration);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, duration, onClose]);
+
   if (!isOpen) return null;
 
   return createPortal(

@@ -8,11 +8,12 @@ function App() {
 
   return (
     <>
-      <Button
-        label="click to trigger toast"
-        onClick={() => setIsOpen(!isOpen)}
+      <Button label="click to trigger toast" onClick={() => setIsOpen(true)} />
+      <Toast
+        isOpen={isOpen}
+        text="toast triggered"
+        onClose={() => setIsOpen(false)}
       />
-      <Toast isOpen={isOpen} text="toast triggered" />
     </>
   );
 }
